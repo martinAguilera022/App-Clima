@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body{
+   background-color: black;
+    height: 100vh;
+    font-family:sans-serif;
+    color: white;
+
+}
+
+p{
+    font-size: 60px;
+}
+.texto-clima{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.texto-clima .grados{
+    font-size: 150px;
+}
+.texto-clima ul li img{
+    width: 500px;
+}
+
+.pais{
+    
+    text-align: start;
+    
+}
