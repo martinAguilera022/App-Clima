@@ -7,7 +7,10 @@
 }
 
 body{
-   background-color: #313745;
+    background: #c0c0aa;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1cefff, #0b0b0b);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #5caeda, #256366); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     height: 100vh;
     font-family:"roboto";
     color: rgb(255, 255, 255);
@@ -23,11 +26,14 @@ p{
     text-align: center;
     margin-top: 50px;
     font-weight: 100;
+    padding-top: 14%;
 }
 
 .texto-clima .grados{
     font-size: 150px;
     font-weight: 300;
+    
+    margin-bottom: 100px;
 }
 .texto-clima ul li img{
     width: 500px;
@@ -35,6 +41,7 @@ p{
 #ubicacion{
     font-size: 70px;
     font-weight: 100;
+    margin-bottom: 50px;
 }
 .pais{
     
@@ -43,16 +50,34 @@ p{
 }
 .clima-sec{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     
     
     padding: 20px;
 
 }
 .clima-sec .section{
-    background-color: rgba(255, 255, 255, 0.167);
+   
     color: #ffffff;
     border-radius: 20px;
-    padding: 50px;
+    background-color: #ffffff03;
+    padding: 36px;
     font-weight: 250;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: solid 3px;
+}
+
+#vientos{
+    justify-self: end;
+   
+    padding: 20px;
+    padding-top: 0;
+    padding-bottom: 0px;
+}
+.sec2{
+    justify-content: center;
+    gap:20px;
 }

@@ -14,7 +14,7 @@ window.addEventListener('load',()=>{
     let tempMax = document.getElementById('temp-max')
     let tempMin= document.getElementById('temp-min')
     let vientos = document.getElementById('vientos')
-
+    let humedad = document.getElementById('humedad')
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition( position =>{
             long = position.coords.longitude;
@@ -47,9 +47,8 @@ window.addEventListener('load',()=>{
                     
                     tempMax.textContent =`${Math.round(data.main.temp_max)} °C`
                    
-                   
-                    
-                    
+                    vientos.textContent = `${(data.wind.speed)} m/s`
+                    humedad.textContent = `${(data.main.humidity)}%`
 
                     // iconos 
 
