@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +7,10 @@
 }
 
 body{
-   background-color: black;
+   background-color: #313745;
     height: 100vh;
-    font-family:sans-serif;
-    color: white;
+    font-family:"roboto";
+    color: rgb(255, 255, 255);
 
 }
 
@@ -20,17 +22,37 @@ p{
     flex-direction: column;
     text-align: center;
     margin-top: 50px;
+    font-weight: 100;
 }
 
 .texto-clima .grados{
     font-size: 150px;
+    font-weight: 300;
 }
 .texto-clima ul li img{
     width: 500px;
 }
-
+#ubicacion{
+    font-size: 70px;
+    font-weight: 100;
+}
 .pais{
     
     text-align: start;
     
+}
+.clima-sec{
+    display: flex;
+    justify-content: space-between;
+    
+    
+    padding: 20px;
+
+}
+.clima-sec .section{
+    background-color: rgba(255, 255, 255, 0.167);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 50px;
+    font-weight: 250;
 }

@@ -11,7 +11,10 @@ window.addEventListener('load',()=>{
     let iconoAnimado  = document.getElementById('icon-animado')
     let temperaturaDescrip = document.getElementById('temperatura-descrip') 
     let sensacionTermica = document.getElementById('sensacion-termica')
-   
+    let tempMax = document.getElementById('temp-max')
+    let tempMin= document.getElementById('temp-min')
+    let vientos = document.getElementById('vientos')
+
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition( position =>{
             long = position.coords.longitude;
@@ -39,7 +42,14 @@ window.addEventListener('load',()=>{
                     grados.textContent = `${temp} °C`
                     sensacionTermica.textContent = Math.round(data.main.feels_like)+" °C "
                     temperaturaDescrip.textContent =(data.weather[0].description).toUpperCase()
-
+                    
+                    tempMin.textContent = `${Math.round(data.main.temp_min)} °C`
+                    
+                    tempMax.textContent =`${Math.round(data.main.temp_max)} °C`
+                   
+                   
+                    
+                    
 
                     // iconos 
 
