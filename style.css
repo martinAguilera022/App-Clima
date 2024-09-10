@@ -1,83 +1,154 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-* {
+
+
+*{
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
-body{
-    background: #c0c0aa;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #1cefff, #0b0b0b);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #5caeda, #256366); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    height: 100vh;
-    font-family:"roboto";
-    color: rgb(255, 255, 255);
-
+body {
+   
+    font-family: "Roboto";
+    background: radial-gradient(circle at right, #ff8c00fa -91%, #010a10 63%, #b7d8f0 204%);
+   
+    color: white;
+    overflow-x: hidden;
+   padding: 30px;
 }
 
-p{
-    font-size: 60px;
-}
-.texto-clima{
-    display: flex;
-    flex-direction: column;
+.app-container {
     text-align: center;
-    margin-top: 50px;
-    font-weight: 100;
-    padding-top: 14%;
+    
+}
+.icon{
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-right: 8px;
+
+}
+/* Header */
+.header h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
 }
 
-.texto-clima .grados{
-    font-size: 150px;
-    font-weight: 300;
-    
-    margin-bottom: 100px;
+/* Main Weather Info */
+.weather-info {
+    margin-bottom: 20px;
 }
-.texto-clima ul li img{
-    width: 500px;
+
+.weather-info img {
+    width: 100px;
+    height: 100px;
 }
-#ubicacion{
-    font-size: 70px;
-    font-weight: 100;
-    margin-bottom: 50px;
+
+.weather-info h2 {
+    font-size: 3em;
+    margin: 10px 0;
 }
-.pais{
-    
-    text-align: start;
-    
+
+.weather-description {
+    font-size: 1.2em;
+    color: #d3d3d3;
 }
-.clima-sec{
+
+/* Details Section */
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.detail .icon {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+/* Hourly Forecast Section */
+.hourly-forecast {
     display: flex;
     justify-content: space-around;
-    
-    
-    padding: 20px;
+    overflow-x: scroll;
+    scrollbar-width: none;
 
+    gap: 10px;
 }
-.clima-sec .section{
-   
-    color: #ffffff;
-    border-radius: 20px;
-    background-color: #ffffff03;
-    padding: 36px;
-    font-weight: 250;
+
+.hour-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    border: solid 3px;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
 }
 
-#vientos{
-    justify-self: end;
-   
-    padding: 20px;
-    padding-top: 0;
-    padding-bottom: 0px;
+.hour-card img {
+    width: 40px;
+    height: 40px;
 }
-.sec2{
-    justify-content: center;
-    gap:20px;
+
+.hour-card p {
+    margin: 5px 0 0;
+}
+.icon-humedad{
+    height: 15px;
+    width: 15px;
+}
+.icon-lluvia{
+    height: 18px;
+    width: 18px;
+}
+.pronostico-hora{
+    width: 100%;
+}
+.pronostico-hora h2{
+    font-size: 10px;
+}
+.tit-hora{
+    display: flex;
+    margin-bottom: 12px;
+    
+}
+
+.tit-hora img {
+    height: 18px;
+    width: 18px;
+    margin-right: 3px;
+}
+
+
+.tit-hora h2{
+    font-size: 14px;
+    font-weight: 300;
+}
+.probLluviaHora{
+    display: flex;
+    flex-direction: row;
+    font-weight: 100;
+    color: #aba7a7;
+}
+.probLluviaHora img{
+    height: 20px;
+    width: 20px;
+    margin-top: 5px;
+    margin-right: 13px;
+    
+}
+.time{
+    font-weight: 100;
+}
+.viento-data{
+    margin-right: -17px;
+
 }

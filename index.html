@@ -1,47 +1,50 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-        <title>App Clima</title>
-        <link rel ="stylesheet" href="style.css"/>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación de clima">
+    <title>App Clima</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      
+      <header class="header">
+        <h1 id="ubicacion">Ubicacion</h1>
+      </header>
+
+      <!-- Información Principal del Clima -->
+      <div class="weather-info">
+        <img id="icon-animado" src="" alt="Icono del clima" />
+        <h2 id="grados">--°C</h2>
+        <p class="weather-description" id="temperatura-descrip">Expect high rain today.</p>
+      </div>
+
+      <!-- Detalles adicionales -->
+      <div class="details">
         
-    </head>
-    <body >
-      <main>
+        <div class="detail"><img class="icon icon-humedad" src="./img/drop.png" alt="Humedad"><p id="humedad">--%</p></div>
+        <div class="detail viento-data"><img class="icon" src="./img/wind (1).png" alt="Viento"> <p id="vientos">-- m/s</p></div>
+        <div class="detail"><img class="icon icon-UV" src="./img/soleado.png" alt="Lluvia"><p id="uv">--%</p></div>
+      </div>
+
+      <!-- Pronóstico por horas -->
+     
+    </div>
+    <section class="pronostico-hora">
+      <div class="tit-hora">
+        <img src="./img/clock.png" alt=""><h2>Pronostico por Hora</h2>
+      </div> 
       
-        <div class="texto-clima">
-          <h1 id="ubicacion"></h1>
-         
-          <ul>
-            <li><img id="icon-animado" src="" alt=""></li>
-            <li><p id="grados" class="grados"> Cargando ...</p></li>
-            
-            <li><p id="temperatura-descrip"></p></li>
-           
-          </ul>
-          
-         
-          <section class="clima-sec">
-            <div class="section"> <p>Maxima</p> <p id="temp-max"></p></div>
-            <div class="section"> <p class="vel-vientos">Viento</p> <p id="vientos">15°</p></div>
-           
-            <div class="section"> <p>Minima</p> <p id="temp-min"></p></div>
-           
-           
-          </section>
-         <section class="clima-sec sec2">
-          <div class="section"> <p>Humedad</p> <p id="humedad">86%</p></div>
-           
-          <div class="section"> <p>S. Termica</p> <p p id="sensacion-termica"></p></div>
-           
-         </section>
-        </div>
-      
-    </main>
-    <footer>
-       
-    </footer>
+      <div class="hourly-forecast" >
+        <div class="hour-card"><p>18:00 pm</p><img src="animated/day.svg" alt=""><p>29°C</p></div>
+        <div class="hour-card"><p>18:00 pm</p><img src="animated/cloudy.svg" alt=""><p>28°C</p></div>
+        <div class="hour-card"><p>18:00 pm</p><img src="animated/rainy-7.svg" alt=""><p>28°C</p></div>
+        <div class="hour-card"><p>18:00 pm</p><img src="animated/night.svg" alt=""><p>27°C</p> <p >100%</p></div>
+      </div>
+
+  </section>
     <script src="index.js"></script>
-    </body>
-    
-   
-  </html>
+  </body>
+</html>

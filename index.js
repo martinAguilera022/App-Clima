@@ -1,96 +1,144 @@
-
 const APP_ID = '4090239d69cdb3874de692fd18539299';
 
-
-window.addEventListener('load',()=>{
+window.addEventListener('load', () => {
     let long;
     let lat;
 
     let ubicacion = document.getElementById('ubicacion');
     let grados = document.getElementById('grados');
-    let iconoAnimado  = document.getElementById('icon-animado')
-    let temperaturaDescrip = document.getElementById('temperatura-descrip') 
-    let sensacionTermica = document.getElementById('sensacion-termica')
-    let tempMax = document.getElementById('temp-max')
-    let tempMin= document.getElementById('temp-min')
-    let vientos = document.getElementById('vientos')
+    let iconoAnimado  = document.getElementById('icon-animado');
+    let temperaturaDescrip = document.getElementById('temperatura-descrip');
+    let vientos = document.getElementById('vientos')    
     let humedad = document.getElementById('humedad')
-    if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition( position =>{
+    let uvIndice = document.getElementById('uv')
+    
+    const hourlyForecastContainer = document.querySelector('.hourly-forecast'); // Contenedor donde se agregarán las tarjetas
+
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
-        
+            
+            
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=es&units=metric&appid=${APP_ID}`;
+            const url2 =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&lang=es&units=metric&appid=${APP_ID}`;
+            const uv = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${long}&appid=${APP_ID}`
 
-            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=es&units=metric&appid=${APP_ID}`
+            fetch(uv)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                uvIndice.textContent =`${data.value} UV `
+
+                
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
             fetch(url)
-                .then ( response => { return response.json () })
-                .then ( data => {
-                    console.log (data)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
 
-                   
-                    // let iconCode = data.weather[0].icon
-    	            // let urlIcon = `https://openweathermap.org/img/wn/${iconCode}.png`
-                    // console.log(urlIcon)
-                    let pais = (data.sys.country)
-                    let ciudad = (data.name)
+                    let pais = data.sys.country;
+                    let ciudad = data.name;
 
-                    
-                    ubicacion.textContent = (`${ciudad} , ${pais}`)
-                  
-                    let temp = Math.round(data.main.temp)
-                    grados.textContent = `${temp} °C`
-                    sensacionTermica.textContent = Math.round(data.main.feels_like)+" °C "
-                    temperaturaDescrip.textContent =(data.weather[0].description).toUpperCase()
-                    
-                    tempMin.textContent = `${Math.round(data.main.temp_min)} °C`
-                    
-                    tempMax.textContent =`${Math.round(data.main.temp_max)} °C`
-                   
+                    ubicacion.textContent = `${ciudad}, ${pais}`;
+                    let temp = Math.round(data.main.temp);
+                    grados.textContent = `${temp} °C`;
                     vientos.textContent = `${(data.wind.speed)} m/s`
-                    humedad.textContent = `${(data.main.humidity)}%`
+                    temperaturaDescrip.textContent = (data.weather[0].description).toUpperCase();
+                    humedad.textContent = `${(data.main.humidity)} %`
+                    
 
-                    // iconos 
-
-                    console.log(data.weather[0].main)
+                    // Iconos de clima
                     switch (data.weather[0].main) {
                         case 'Thunderstorm':
-                          iconoAnimado.src='animated/thunder.svg'
-                          console.log('TORMENTA');
-                          break;
+                            iconoAnimado.src = 'animated/thunder.svg';
+                            break;
                         case 'Drizzle':
-                          iconoAnimado.src='animated/rainy-2.svg'
-                          console.log('LLOVIZNA');
-                          break;
+                            iconoAnimado.src = 'animated/rainy-2.svg';
+                            break;
                         case 'Rain':
-                          iconoAnimado.src='animated/rainy-7.svg'
-                          console.log('LLUVIA');
-                          break;
+                            iconoAnimado.src = 'animated/rainy-7.svg';
+                            break;
                         case 'Snow':
-                          iconoAnimado.src='animated/snowy-6.svg'
-                            console.log('NIEVE');
-                          break;                        
+                            iconoAnimado.src = 'animated/snowy-6.svg';
+                            break;
                         case 'Clear':
-                            iconoAnimado.src='animated/day.svg'
-                            console.log('LIMPIO');
-                          break;
+                            iconoAnimado.src = 'animated/day.svg';
+                            break;
                         case 'Atmosphere':
-                            iconoAnimado.src='animated/weather.svg'
-                            console.log('ATMOSFERA');
-                            break;  
+                            iconoAnimado.src = 'animated/weather.svg';
+                            break;
                         case 'Clouds':
-                            iconoAnimado.src='animated/cloudy.svg'
-                            console.log('NUBES');
-                            break;  
+                            iconoAnimado.src = 'animated/cloudy.svg';
+                            break;
                         default:
-                          iconoAnimado.src='animated/cloudy-day-1.svg'
-                          console.log('por defecto');
-                      }
+                            iconoAnimado.src = 'animated/cloudy-day-1.svg';
+                    }
                 })
-                .catch ( error =>{
-                    console.log(error)
+                .catch(error => {
+                    console.log(error);
+                });
+
+                fetch(url2)
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log(data);
+
+                    if (data.list && data.list.length > 0) {
+                        hourlyForecastContainer.innerHTML = '';
+                       
+                        for (let i = 0; i < 8; i++) {
+                            if (i < data.list.length) {
+                                const entry = data.list[i]; // El pronóstico cada 3 horas
+                                const time = new Date(entry.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Hora en formato legible
+                                const temp = Math.round(entry.main.temp); // Temperatura
+                                const iconSrc = getIconSrc(entry.weather[0].main); // Obtener ícono correspondiente
+                                const probLluvia =Math.round((entry.pop)*100) // Probabilidad de lluvia en porcentaje
+                                // Crear el nuevo elemento de tarjeta
+                                const hourCard = document.createElement('div');
+                                hourCard.classList.add('hour-card');
+                                hourCard.innerHTML = `
+                                    <p class="time">${time}</p>
+                                    <img src="${iconSrc}" alt="Ícono del clima">
+                                    <p>${temp}°C</p>
+                                     <div class= "probLluviaHora"><img src="./img/umbrella.png" alt="Lluvia"><p>${probLluvia}%</p></div>
+                                `;
+
+                                // Agregar la tarjeta al contenedor
+                                hourlyForecastContainer.appendChild(hourCard);
+                            }
+                        }
+                    }
                 })
-        
-        })
+                .catch(error => console.error('Error:', error));
+          
+        });
     }
-})
+});
+
+function getIconSrc(weatherMain) {
+  // Asignar el ícono correspondiente
+  switch (weatherMain) {
+      case 'Thunderstorm':
+          return 'animated/thunder.svg';
+      case 'Drizzle':
+          return 'animated/rainy-2.svg';
+      case 'Rain':
+          return 'animated/rainy-7.svg';
+      case 'Snow':
+          return 'animated/snowy-6.svg';
+      case 'Clear':
+          return 'animated/day.svg';
+      case 'Atmosphere':
+          return 'animated/weather.svg';
+      case 'Clouds':
+          return 'animated/cloudy.svg';
+      default:
+          return 'animated/cloudy-day-1.svg';
+  }
+}
