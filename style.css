@@ -11,12 +11,14 @@
 body {
    
     font-family: "Roboto";
-    background: radial-gradient(circle at right, #ff8c00fa -91%, #010a10 63%, #b7d8f0 204%);
-   
     color: white;
     overflow-x: hidden;
-   padding: 30px;
+    padding: 30px;
+    background: radial-gradient(circle at right, #ff8c00fa -91%, #010a10 63%, #b7d8f0 204%);
+    
 }
+
+
 
 .app-container {
     text-align: center;

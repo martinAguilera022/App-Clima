@@ -47,7 +47,7 @@ window.addEventListener('load', () => {
 
                     ubicacion.textContent = `${ciudad}, ${pais}`;
                     let temp = Math.round(data.main.temp);
-                    grados.textContent = `${temp} °C`;
+                    grados.textContent = `${temp-6} °C`;
                     vientos.textContent = `${(data.wind.speed)} m/s`
                     temperaturaDescrip.textContent = (data.weather[0].description).toUpperCase();
                     humedad.textContent = `${(data.main.humidity)} %`
@@ -96,7 +96,7 @@ window.addEventListener('load', () => {
                             if (i < data.list.length) {
                                 const entry = data.list[i]; // El pronóstico cada 3 horas
                                 const time = new Date(entry.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Hora en formato legible
-                                const temp = Math.round(entry.main.temp); // Temperatura
+                                const tempHora = Math.round(entry.main.temp); // Temperatura
                                 const iconSrc = getIconSrc(entry.weather[0].main); // Obtener ícono correspondiente
                                 const probLluvia =Math.round((entry.pop)*100) // Probabilidad de lluvia en porcentaje
                                 // Crear el nuevo elemento de tarjeta
@@ -105,7 +105,7 @@ window.addEventListener('load', () => {
                                 hourCard.innerHTML = `
                                     <p class="time">${time}</p>
                                     <img src="${iconSrc}" alt="Ícono del clima">
-                                    <p>${temp}°C</p>
+                                    <p>${tempHora}°C</p>
                                      <div class= "probLluviaHora"><img src="./img/umbrella.png" alt="Lluvia"><p>${probLluvia}%</p></div>
                                 `;
 
