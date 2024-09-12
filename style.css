@@ -9,7 +9,6 @@
 }
 
 body {
-   
     font-family: "Roboto";
     color: white;
     overflow-x: hidden;
@@ -18,7 +17,36 @@ body {
     
 }
 
+.menu-icon {
 
+
+    width: 30px;
+
+    height: 20px;
+
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+
+
+    .line {
+
+        height: 4px;
+
+        background-color: #ffffff;
+
+        border-radius: 2px;
+
+        width: 100%;
+
+
+    }
+}
 
 .app-container {
     text-align: center;
@@ -36,7 +64,59 @@ body {
     font-size: 1.8em;
     margin-bottom: 10px;
 }
+.buscador{
+    display: flex;
 
+}
+
+.input-collapsible {
+   
+    width: 0;
+    opacity: 0;
+     
+    padding: 0;
+}
+
+.input-expanded {
+    transition: width 0.5s ease, opacity 0.5s ease;
+    width: 100%;
+    opacity: 1;
+     
+    border-radius: 20px;
+    background-color: rgb(255 255 255 / 4%);
+    border: 1px solid white;
+    width: 100%;
+    margin-left: 13px;
+    margin-right: 24px;
+    transition: width 0.5s ease, opacity 0.5s ease; 
+    display: flex;
+    padding-left: 13px;
+
+}
+.input-expanded input{
+   
+    color: white;
+    font-family: "Roboto";
+    
+    background: none;
+    border: none;
+    width: 100%;
+}
+.buscador .flecha{
+    height: 22px;
+    background-color: white;
+    align-self: center;
+    margin-right: 4px;
+    padding: 4px;
+    border-radius: 20px;
+    
+}
+.menu-icon{
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    margin-top: 6px;
+}
 /* Main Weather Info */
 .weather-info {
     margin-bottom: 20px;
